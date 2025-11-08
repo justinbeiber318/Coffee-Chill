@@ -1,0 +1,183 @@
+/* ===== Mobile-first ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff8f0;
+  color: #3a2f2f;
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1; /* nội dung chính chiếm phần còn lại */
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #fff8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #ddd;
+}
+
+header h2 {
+  font-size: 1.5rem;
+}
+
+/* Checkbox hack for hamburger */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: block;
+  cursor: pointer;
+  width: 25px;
+  height: 20px;
+  position: relative;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  display: block;
+  background: #3a2f2f;
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle-label span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-toggle-label span::before {
+  top: -8px;
+}
+
+.nav-toggle-label span::after {
+  bottom: -8px;
+}
+
+/* Nav mobile hidden by default */
+header nav {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #3a2f2f;
+}
+
+header nav a:hover {
+  color: #7a5c3b;
+}
+
+/* Show nav when checkbox checked */
+.nav-toggle:checked + .nav-toggle-label + nav {
+  display: flex;
+}
+
+/* ===== Promo Section ===== */
+.promo-section {
+  padding: 6rem 1.5rem 4rem 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.promo-section h2 {
+  font-size: 2rem;
+  color: #7a5c3b;
+  margin-bottom: 2rem;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.promo-card {
+  background: #fff4e6;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.promo-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.promo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #3a2f2f;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #f0c27b;
+}
+
+/* ===== Tablet & Desktop ===== */
+@media (min-width: 768px) {
+  /* Menu luôn hiển thị ngang */
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header nav {
+    display: flex !important;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+
+  .promo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  header h2 {
+    font-size: 2rem;
+  }
+
+  .promo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
